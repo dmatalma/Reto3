@@ -8,6 +8,7 @@ import java.util.List;
 @Entity
 @Table(name="skate")
 public class Skate implements Serializable {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -99,6 +100,10 @@ public class Skate implements Serializable {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    public void setDescription(Skate c) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
 }

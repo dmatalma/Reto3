@@ -16,24 +16,34 @@ import java.util.Optional;
 public class CategoryController {
 
     @Autowired
-    private CategoryService categoriaService;
+    private CategoryService categoryService;
 
     @GetMapping("/all")
-    public List<Category> getCategorias(){
-        return categoriaService.getAll();
+    public List<Category> getCategories(){
+        return categoryService.getAll();
     }
     @GetMapping("/{id}")
-    public Optional<Category> getCategoria(@PathVariable("id") int id){
-        return categoriaService.getCategoria(id);
+    public Optional<Category> getCategory(@PathVariable("id") int id){
+        return categoryService.getCategory(id);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Category save(@RequestBody Category c){
-        return categoriaService.save(c);
+        return categoryService.save(c);
     }
 
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Category update(@RequestBody Category c){
+        return categoryService.update(c);
+    }
+    
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean deleteCategory(@PathVariable("id") int categoryId){
+        return categoryService.deleteCategory(categoryId);
+    }
 
-
-
+    
 }

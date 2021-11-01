@@ -1,5 +1,6 @@
 package co.usa.ciclo3.reto3.repository;
 
+import co.usa.ciclo3.reto3.model.Category;
 import co.usa.ciclo3.reto3.model.Skate;
 import co.usa.ciclo3.reto3.repository.crud.SkateCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class SkateRepository {
 
     public Skate save(Skate p){
         return skateCrudRepository.save(p);
+    }
+
+    public void delete(Skate p){
+        skateCrudRepository.delete(p);
     }
 
 }

@@ -33,7 +33,15 @@ public class ClientController {
         return clientService.save(p);
     }
 
-
-
-
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Client update(@RequestBody Client p){
+        return clientService.update(p);
+    }
+    
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int clientId) {
+        return clientService.deleteClient(clientId);
+    }
 }

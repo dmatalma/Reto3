@@ -1,6 +1,7 @@
 package co.usa.ciclo3.reto3.web;
 
-
+import co.usa.ciclo3.reto3.Reportes.ContadorClientes;
+import co.usa.ciclo3.reto3.Reportes.StatusReservas;
 import co.usa.ciclo3.reto3.model.Reservation;
 import co.usa.ciclo3.reto3.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,30 @@ public class ReservationController {
     }
 
 
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reservation update(@RequestBody Reservation reservation) {
+        return reservationService.update(reservation);
+    }
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int reservationId) {
+        return reservationService.deleteReservation(reservationId);
+    }
 
+    @GetMapping("/report-status")
+    public StatusReservas getReservas(){
+        return reservationService.getReporteStatusReservaciones();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservasTiempo (@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo){
+        return reservationService.getReporteTiempoReservaciones(dateOne, dateTwo);
+    }
+
+    @GetMapping("report-clients")
+    public List<ContadorClientes> getClients (){
+        return reservationService.getTopClient();
+    }
 
 }

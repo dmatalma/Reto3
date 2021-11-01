@@ -11,15 +11,25 @@ import co.usa.ciclo3.reto3.repository.crud.CategoryCrudRepository;
 @Repository
 public class CategoryRepository {
     @Autowired
-    private CategoryCrudRepository categoriaCrudRepository;
+    private CategoryCrudRepository categoryCrudRepository;
 
+    ///Trae todos los elementos que están en la base de datos
     public List<Category> getAll(){
-        return (List<Category>) categoriaCrudRepository.findAll();
+        return (List<Category>) categoryCrudRepository.findAll();
     }
-    public Optional<Category>getCategoria(int id){
-        return categoriaCrudRepository.findById(id);
+        ///Trae las categorías
+    public Optional<Category>getCategory(int id){
+        return categoryCrudRepository.findById(id);
     }
+    
+    ///Guarda las categorías
     public Category save(Category c){
-        return categoriaCrudRepository.save(c);
+        return categoryCrudRepository.save(c);
+    }
+    
+    ///Borrar una categoría
+    public void delete(Category c){
+        categoryCrudRepository.delete(c);
+        
     }
 }
